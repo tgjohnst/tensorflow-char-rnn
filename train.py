@@ -18,7 +18,7 @@ def main():
     parser = argparse.ArgumentParser()
 
     # Data and vocabulary file
-    parser.add_argument('--data_file', type=str,
+    parser.add_argument('--data-file', type=str,
                         default='data/tiny_shakespeare.txt',
                         help='data file')
 
@@ -27,58 +27,58 @@ def main():
                         help='the encoding of the data file.')
 
     # Parameters for saving models.
-    parser.add_argument('--output_dir', type=str, default='output',
+    parser.add_argument('--output-dir', type=str, default='output',
                         help=('directory to store final and'
                               ' intermediate results and models.'))
-    parser.add_argument('--n_save', type=int, default=1,
+    parser.add_argument('--n-save', type=int, default=1,
                         help='how many times to save the model during each epoch.')
-    parser.add_argument('--max_to_keep', type=int, default=5,
+    parser.add_argument('--max-to-keep', type=int, default=5,
                         help='how many recent models to keep.')
     
     # Parameters to configure the neural network.
-    parser.add_argument('--hidden_size', type=int, default=128,
+    parser.add_argument('--hidden-size', type=int, default=128,
                         help='size of RNN hidden state vector')
-    parser.add_argument('--embedding_size', type=int, default=0,
+    parser.add_argument('--embedding-size', type=int, default=0,
                         help='size of character embeddings')
-    parser.add_argument('--num_layers', type=int, default=2,
+    parser.add_argument('--num-layers', type=int, default=2,
                         help='number of layers in the RNN')
-    parser.add_argument('--num_unrollings', type=int, default=10,
+    parser.add_argument('--num-unrollings', type=int, default=10,
                         help='number of unrolling steps.')
     parser.add_argument('--model', type=str, default='lstm',
                         help='which model to use (rnn, lstm or gru).')
     
     # Parameters to control the training.
-    parser.add_argument('--num_epochs', type=int, default=50,
+    parser.add_argument('--num-epochs', type=int, default=50,
                         help='number of epochs')
-    parser.add_argument('--batch_size', type=int, default=20,
+    parser.add_argument('--batch-size', type=int, default=20,
                         help='minibatch size')
-    parser.add_argument('--train_frac', type=float, default=0.9,
+    parser.add_argument('--train-frac', type=float, default=0.9,
                         help='fraction of data used for training.')
-    parser.add_argument('--valid_frac', type=float, default=0.05,
+    parser.add_argument('--valid-frac', type=float, default=0.05,
                         help='fraction of data used for validation.')
     # test_frac is computed as (1 - train_frac - valid_frac).
     parser.add_argument('--dropout', type=float, default=0.0,
                         help='dropout rate, default to 0 (no dropout).')
 
-    parser.add_argument('--input_dropout', type=float, default=0.0,
+    parser.add_argument('--input-dropout', type=float, default=0.0,
                         help=('dropout rate on input layer, default to 0 (no dropout),'
                               'and no dropout if using one-hot representation.'))
 
     # Parameters for gradient descent.
-    parser.add_argument('--max_grad_norm', type=float, default=5.,
+    parser.add_argument('--max-grad-norm', type=float, default=5.,
                         help='clip global grad norm')
-    parser.add_argument('--learning_rate', type=float, default=2e-3,
+    parser.add_argument('--learning-rate', type=float, default=2e-3,
                         help='initial learning rate')
-    parser.add_argument('--decay_rate', type=float, default=0.95,
+    parser.add_argument('--decay-rate', type=float, default=0.95,
                         help='decay rate')
 
     # Parameters for logging.
-    parser.add_argument('--log_to_file', dest='log_to_file', action='store_true',
+    parser.add_argument('--log-to-file', dest='log_to_file', action='store_true',
                         help=('whether the experiment log is stored in a file under'
                               '  output_dir or printed at stdout.'))
     parser.set_defaults(log_to_file=False)
     
-    parser.add_argument('--progress_freq', type=int,
+    parser.add_argument('--progress-freq', type=int,
                         default=100,
                         help=('frequency for progress report in training'
                               ' and evalution.'))
@@ -89,18 +89,18 @@ def main():
                               ' and evalution.'))
 
     # Parameters to feed in the initial model and current best model.
-    parser.add_argument('--init_model', type=str,
+    parser.add_argument('--init-model', type=str,
                         default='',
                         help=('initial model'))
-    parser.add_argument('--best_model', type=str,
+    parser.add_argument('--best-model', type=str,
                         default='',
                         help=('current best model'))
-    parser.add_argument('--best_valid_ppl', type=float,
+    parser.add_argument('--best-valid-ppl', type=float,
                         default=np.Inf,
                         help=('current valid perplexity'))
     
     # Parameters for using saved best models.
-    parser.add_argument('--init_dir', type=str, default='',
+    parser.add_argument('--init-dir', type=str, default='',
                         help='continue from the outputs in the given directory')
 
     # Parameters for debugging.

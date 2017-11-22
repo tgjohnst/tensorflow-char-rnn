@@ -14,11 +14,11 @@ def main():
     parser = argparse.ArgumentParser()
     
     # Parameters for using saved best models.
-    parser.add_argument('--init_dir', type=str, default='',
+    parser.add_argument('--init-dir', type=str, default='',
                         help='continue from the outputs in the given directory')
 
     # Parameters for picking which model to use. 
-    parser.add_argument('--model_path', type=str, default='',
+    parser.add_argument('--model-path', type=str, default='',
                         help='path to the model file like output/best_model/model-40.')
 
     # Parameters for sampling.
@@ -28,12 +28,12 @@ def main():
                               'higher temperature, more random; '
                               'lower temperature, more greedy.'))
 
-    parser.add_argument('--max_prob', dest='max_prob', action='store_true',
+    parser.add_argument('--max-prob', dest='max_prob', action='store_true',
                         help='always pick the most probable next character in sampling')
 
     parser.set_defaults(max_prob=False)
 
-    parser.add_argument('--start_text', type=str,
+    parser.add_argument('--start-text', type=str,
                         default='The meaning of life is ',
                         help='the text to start with')
 
@@ -50,7 +50,7 @@ def main():
     parser.add_argument('--evaluate', dest='evaluate', action='store_true',
                         help='compute the perplexity of given text')
     parser.set_defaults(evaluate=False)
-    parser.add_argument('--example_text', type=str,
+    parser.add_argument('--example-text', type=str,
                         default='The meaning of life is 42.',
                         help='compute the perplexity of given example text.')
 
